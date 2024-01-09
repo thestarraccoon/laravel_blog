@@ -35,6 +35,27 @@
                                 <div class="text-danger">Это поле необходимо для заполнения</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="email" placeholder="Email" value="{{ $user->email }}">
+                            @error('email')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group w-50">
+                            <label>Выберите тип пользователя</label>
+                            <select name="role" class="form-control">
+                                @foreach($roles as $id => $role)
+                                    <option value="{{ $id }}" {{ $id == $user->role ? 'selected' : '' }}>{{ $role }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('role')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group w-50">
+                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                        </div>
                         <input type="submit" class="btn btn-primary" value="Обновить">
                     </form>
                 </div>
