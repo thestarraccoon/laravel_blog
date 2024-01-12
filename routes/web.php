@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => ['admin', 'auth', 'verified']], function () {
     Route::group(['namespace' => 'Main'], function () {
         Route::get('/', 'AdminIndexController')->name('admin.index');
     });
@@ -64,6 +64,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
 });
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 
