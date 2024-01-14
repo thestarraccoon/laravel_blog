@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
+    Route::get('/', 'IndexController')->name('main.index');
+});
+
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => ['admin', 'auth', 'verified']], function () {
     Route::group(['namespace' => 'Main'], function () {
         Route::get('/', 'AdminIndexController')->name('admin.index');
@@ -69,9 +73,13 @@ Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'perso
     });
     Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function () {
         Route::get('/', 'PersonalIndexController')->name('personal.liked.index');
+        Route::get('/{post}', 'DeleteController')->name('personal.liked.delete');
     });
     Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function () {
         Route::get('/', 'PersonalIndexController')->name('personal.comment.index');
+        Route::get('/{comment}', 'DeleteController')->name('personal.comment.delete');
+        Route::get('/{comment}/edit', 'EditController')->name('personal.comment.edit');
+        Route::get('/{comment}', 'UpdateController')->name('personal.comment.update');
     });
 });
 
