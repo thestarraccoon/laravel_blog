@@ -13,6 +13,6 @@ class PersonalIndexController extends Controller
 {
     public function __invoke()
     {
-        return  view('personal.main.index');
+        return view('personal.main.index');
     }
 }

@@ -15,6 +15,6 @@ class DeleteController extends Controller
     {
         auth()->user()->likedPosts()->detach($post->id);
 //        dd($posts);
-        return  redirect()->route('personal.liked.index');
+        return redirect()->route('personal.liked.index');
     }
 }
