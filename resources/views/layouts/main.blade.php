@@ -27,6 +27,9 @@
                         <a class="nav-link" href="{{ route('main.index') }}">Блог</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('category.index') }}">Категории</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('personal.index') }}">Войти</a>
                     </li>
                 </ul>
